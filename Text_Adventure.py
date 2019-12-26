@@ -1,6 +1,5 @@
 import random
 import time
-from pprint import pprint
 
 # -----------FUNCTIONS--------
 def createWorld(name, long, lat):
@@ -117,12 +116,22 @@ printas(pnj1.name, "Well I heard you bought the last Cactus Juice of the town !?
 last juice you've gotta help us get some more.\n\n")
 
 answer = "a"
-while answer != "yes":
+while answer != "no":
 	answer = input("What do you say ? [Yes] / [No]\n").lower().strip()
 
-	if int(drink) != "yes":
+	if answer == "no":
 		printas(pnj1.name, "What ? No !? How dare you ! You finish our stock and you dare say NO ?... You know what, \
-we're going to play a game ! If I win you help the town, and if you don't have to. \
-How does that sound ?")
+we're going to play a game ! If I win you help the town, and if you win you don't have to.\n")
+		print("The game is Who has the highest number ! It's simple you have to draw the highest number inside a deck of 10 cards !\n")
+		print(pnj1.name + " draws a card...")
+		pickAI = random.randint(1,10)
+		time.sleep(1)
+		printas(pnj1.name, "I have got the %r. Your Turn now !" %(pickAI))
+		print(player1.name + " draws a card...")
+		pickPlayer = random.randint(1,10)
+		time.sleep(1)
+		printas(player1.name, "I have got the %r !" %(pickAI))
+
+		
 		
 printas(pnj1.name, "Oh how nice of you ! You'll redeem yourself once you replenish the reserve of Juice.")
