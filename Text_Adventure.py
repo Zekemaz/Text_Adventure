@@ -52,6 +52,13 @@ pnj = []
 
 
 # -----------INTRO--------
+# -----------INTRO--------
+# -----------INTRO--------
+# -----------INTRO--------
+# -----------INTRO--------
+# -----------INTRO--------
+# -----------INTRO--------
+# -----------INTRO--------
 print("----------------------------------------------------------------")
 print("In this adventure you'll play as Allegory, a magnificient Cowboy...")
 print("----------------------------------------------------------------")
@@ -59,12 +66,19 @@ print("----------------------------------------------------------------")
 
 
 # -----------CHOICE DRINk--------
+# -----------CHOICE DRINk--------
+# -----------CHOICE DRINk--------
+# -----------CHOICE DRINk--------
+# -----------CHOICE DRINk--------
+# -----------CHOICE DRINk--------
+# -----------CHOICE DRINk--------
+# -----------CHOICE DRINk--------
+
 print("Allegory enters the bar in The Town to refresh himself with a drink.\n")
 printas("barman", "Welcome in the CactusPub ! You can have anything to drink ! Make a choice")
 
 drink = 0
 
-#drink = input("What drink would you like ?\n 1. Cactus Juice\n 2. Beer\n 3. Whiskey\n   ----> ")
 while int(drink) != 1:
 	print("The list of drinks")
 	drink = input("1. Cactus Juice\n2. Beer\n3. Whiskey\n   ----> ")
@@ -83,7 +97,15 @@ while sit != "sit":
 print("Allegory goes and sit alone sipping on his juice...\n\n")
 time.sleep(1.5)
 
-# -----------PNJ COMES--------
+# -----------PNJ INTERACTION--------
+# -----------PNJ INTERACTION--------
+# -----------PNJ INTERACTION--------
+# -----------PNJ INTERACTION--------
+# -----------PNJ INTERACTION--------
+# -----------PNJ INTERACTION--------
+# -----------PNJ INTERACTION--------
+# -----------PNJ INTERACTION--------
+# -----------PNJ INTERACTION--------
 
 pnj1 = Character("PNJ-Julien", 1, 1, 1)
 pnj.append(pnj1)
@@ -91,5 +113,16 @@ print("*************POP*************\n\n")
 printas("pnj", "Hey there, my name is Julien\n")
 printas(player1.name, "Good morning, what can I do for you ?\n")
 printas(pnj1.name, "Well I heard you bought the last Cactus Juice of the town !? Yes I know... \
- News fly extremely fast ! Have you seen how small this town is ?\nAnyway. Now that you bought the \
- last juice you've gotta help us get some more. What do you say ?" )
+ News fly extremely fast ! It's normal have you seen how small this town is ? Anyway... Now that you bought the \
+last juice you've gotta help us get some more.\n\n")
+
+answer = "a"
+while answer != "yes":
+	answer = input("What do you say ? [Yes] / [No]\n").lower().strip()
+
+	if int(drink) != "yes":
+		printas(pnj1.name, "What ? No !? How dare you ! You finish our stock and you dare say NO ?... You know what, \
+we're going to play a game ! If I win you help the town, and if you don't have to. \
+How does that sound ?")
+		
+printas(pnj1.name, "Oh how nice of you ! You'll redeem yourself once you replenish the reserve of Juice.")
