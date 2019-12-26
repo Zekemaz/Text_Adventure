@@ -34,42 +34,62 @@ class Character:
 		self.defence = newDefence	
 
 
+def printas(name: str, text:str):
+    print("[" + name.upper() + "] : " + text)
+
 
 player = []
-player.append(Character("Allegory", 100, 50, 50))
 
-ennemy = []
-#ennemy.append(Character(Allegory, 100, 50, 50))
+player1=Character("Allegory", 100, 50, 50)
 
-png = []
-#png.append(Character(Julien, 1, 1, 1))
+player.append(player1)
+
+enemy = []
+enemy1 = Character("xxx", 100, 50, 50)
+#ennemy.append(enemy1)
+
+pnj = []
+
 
 # -----------INTRO--------
 print("----------------------------------------------------------------")
 print("In this adventure you'll play as Allegory, a magnificient Cowboy...")
 print("----------------------------------------------------------------")
 
-print("Allegory enters the bar in The Town to refresh himself with a drink.")
 
 
 # -----------CHOICE DRINk--------
-drink = input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n   ----> ")
-while int(drink) < 1 or int(drink) > 3 :
-	drink = input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n   ----> ")
+print("Allegory enters the bar in The Town to refresh himself with a drink.\n")
+printas("barman", "Welcome in the CactusPub ! You can have anything to drink ! Make a choice")
 
-while int(drink) == 1:
-	print("Are you sure you want a beer ? Why don't you try a Juice ?")
-	#time.sleep(1)
-	drink = input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n   ----> ")
+drink = 0
 
-if int(drink) == 2:
-	print("Yes ! Now that's what I'm talking about ! An excellent choice !")
-	#time.sleep(1)
-	print("As good a choice this was, you bought the last Cactus Juice... \
-	Some people are going to get angry. Good Luck !")
+#drink = input("What drink would you like ?\n 1. Cactus Juice\n 2. Beer\n 3. Whiskey\n   ----> ")
+while int(drink) != 1:
+	print("The list of drinks")
+	drink = input("1. Cactus Juice\n2. Beer\n3. Whiskey\n   ----> ")
+	if int(drink) != 1:
+		print("Are you sure you want this ? Why don't you try something else ?")
 
-while int(drink) == 3:
-	print("Are you sure you want a whiskey ? Why don't you try a Juice ?")
-	#time.sleep(1)
-	drink = input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n")
+printas("barman", "Well, good for you I don't know one drink better than this one !\
+ But sadly you bought the last one. I know some people that will be angry knowing this.\n")
+time.sleep(0.5)
 
+sit = input("Do you want stand at the bar or sit down at a table ? [Stand]/[Sit] \n").lower().strip()
+while sit != "sit":
+	print("Hm.. I'd say we sit what do you think ?\n")
+	sit = input("Do you want stand at the bar or sit down at a table ? [Stand]/[Sit] \n").lower().strip()
+
+print("Allegory goes and sit alone sipping on his juice...\n\n")
+time.sleep(1.5)
+
+# -----------PNJ COMES--------
+
+pnj1 = Character("PNJ-Julien", 1, 1, 1)
+pnj.append(pnj1)
+print("*************POP*************\n\n")
+printas("pnj", "Hey there, my name is Julien\n")
+printas(player1.name, "Good morning, what can I do for you ?\n")
+printas(pnj1.name, "Well I heard you bought the last Cactus Juice of the town !? Yes I know... \
+ News fly extremely fast ! Have you seen how small this town is ?\nAnyway. Now that you bought the \
+ last juice you've gotta help us get some more. What do you say ?" )
