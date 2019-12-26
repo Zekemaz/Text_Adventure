@@ -52,25 +52,24 @@ print("----------------------------------------------------------------")
 print("Allegory enters the bar in The Town to refresh himself with a drink.")
 
 
-drink = print(" que voulez vous boire 1 2 3", int(input()))
 # -----------CHOICE DRINk--------
 drink = input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n   ----> ")
-while drink < 1 or drink > 3 :
-	drink = int(input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n   ----> "))
+while int(drink) < 1 or int(drink) > 3 :
+	drink = input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n   ----> ")
 
-while drink == 1:
+while int(drink) == 1:
 	print("Are you sure you want a beer ? Why don't you try a Juice ?")
 	#time.sleep(1)
-	drink = int(input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n   ----> "))
+	drink = input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n   ----> ")
 
-if drink == 2:
+if int(drink) == 2:
 	print("Yes ! Now that's what I'm talking about ! An excellent choice !")
 	#time.sleep(1)
 	print("As good a choice this was, you bought the last Cactus Juice... \
 	Some people are going to get angry. Good Luck !")
 
-while drink == 3:
+while int(drink) == 3:
 	print("Are you sure you want a whiskey ? Why don't you try a Juice ?")
 	#time.sleep(1)
-	drink = int(input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n"))
+	drink = input("What drink would you like ?\n 1. Beer\n 2. Cactus Juice\n 3. Whiskey\n")
 
