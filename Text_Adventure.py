@@ -9,11 +9,11 @@ def createWorld(name, long, lat):
 createWorld( "The Town", 1, 1)
 
 class Character:
-def __innit__(self, name, health, attack, defence):
-	self.name = name
-	self.health = health
-	self.attack = attack
-	self.defence = defence
+	def __init__(self, name, health, attack, defence):
+		self.name = name
+		self.health = health
+		self.attack = attack
+		self.defence = defence
 
 	def getName(self):
 		return self.name
@@ -24,7 +24,7 @@ def __innit__(self, name, health, attack, defence):
 	def getDefence(self):
 		return self.defence
 
-	def setName(self, newName)
+	def setName(self, newName):
 		self.name = newName
 	def setHealth(self, newHealth):
 		self.health = newHealth
@@ -36,7 +36,7 @@ def __innit__(self, name, health, attack, defence):
 
 
 player = []
-player.append(Character(Allegory, 100, 50, 50))
+player.append(Character("Allegory", 100, 50, 50))
 
 ennemy = []
 #ennemy.append(Character(Allegory, 100, 50, 50))
