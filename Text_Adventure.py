@@ -116,7 +116,7 @@ printas(pnj1.name, "Well I heard you bought the last Cactus Juice of the town !?
 last juice you've gotta help us get some more.\n\n")
 
 answer = "a"
-while answer != "no":
+while answer != "yes":
 	answer = input("What do you say ? [Yes] / [No]\n").lower().strip()
 
 	if answer == "no":
@@ -131,7 +131,6 @@ we're going to play a game ! If I win you help the town, and if you win you don'
 		pickPlayer = random.randint(1,10)
 		time.sleep(1)
 		printas(player1.name, "I have got the %r !" %(pickAI))
-
-		
-		
+				
 printas(pnj1.name, "Oh how nice of you ! You'll redeem yourself once you replenish the reserve of Juice.")
+print("hvhhhgh")
