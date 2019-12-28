@@ -3,8 +3,8 @@ import time
 import class_file
 import function_file
 # -----------FUNCTIONS--------
-from class_file import Character
-from function_file import createWorld, printas, print_loading
+from class_file import Character, Item
+from function_file import createWorld, printas, print_Loading_Name, print_Loading, print_Short_Loading
 
 createWorld("The Town", 1, 1)
 
@@ -17,6 +17,11 @@ enemy1 = Character("xxx", 100, 50, 50)
 #ennemylist.append(enemy1)
 
 npclist = []
+
+itemlist = []
+
+blood_thorn = 0
+
 
 
 # -----------INTRO--------
@@ -42,14 +47,14 @@ print("----------------------------------------------------------------")
 # -----------CHOICE DRINk--------
 # -----------CHOICE DRINk--------
 
-print("Allegory enters the bar in The Town to refresh himself with a drink.\n")
+printas("story teller", "You enter the bar in The Town to refresh yourself with a drink.\n")
 printas("barman", "Welcome in the CactusPub ! You can have anything to drink ! Make a choice")
 
 drink = 0
 
 while int(drink) != 1:
 	print("The list of drinks")
-	drink = input("1. Cactus Juice ---- Enter [1]\n2. Beer         ---- Enter [2]\n3. Whiskey      ---- Enter [3]\n   ----> ")
+	drink = input("1. Cactus Juice	---- Enter [1]\n2. Beer		---- Enter [2]\n3. Whiskey	---- Enter [3]\n   ----> ")
 	if int(drink) != 1:
 		printas("barman", "Are you sure you want this ? Why don't you try something else ?")
 
@@ -102,12 +107,12 @@ we're going to play a game ! If I win you help the town, and if you win you don'
 
 	score = 0
 	while score >= 0:
-		print_loading(npc1.name, "draws a card")
+		print_Loading("NPC-Julien draws a card")
 		pickAI = random.randint(4,10)
 		time.sleep(0.5)
 		printas(npc1.name,"I have got the %r. Your Turn now !" %(pickAI))
 		time.sleep(0.5)
-		print_loading(player1.name, "draws a card")
+		print_Loading("You draw a card")
 		pickPlayer = random.randint(1,10)
 		time.sleep(0.5)
 		printas(player1.name,"I have got the %r !" %(pickPlayer))
@@ -122,5 +127,74 @@ we're going to play a game ! If I win you help the town, and if you win you don'
 elif answer == "yes":
     printas(npc1.name, "Oh how nice of you ! You'll redeem yourself once you replenish the reserve of Juice.\n")
 
-		
+#------------------------GAME------------------------
+#------------------------GAME------------------------
+#------------------------GAME------------------------
+#------------------------GAME------------------------
+#------------------------GAME------------------------
+#------------------------GAME------------------------
+#------------------------GAME------------------------
+
+printas(npc1.name, "Ok... it's basically the adventure of a lifetime. All you have to do is travel through the\
+desert to get to the forest to get\
+us some cactus juice. See how easy that sounds ?\n Now I'm going to give you this \
+small ikea cherry wood faucet that you will need to shank into the juiciest and plumpiest cactus you'll find.\n\n")
+
+
+item1 = Item("Small Ikea Cherry Wood Faucet", "Tap/Robinet")
+itemlist.append(item1)
+time.sleep(2)
+
+printas("story teller", "YOU OBTAINED A 'Small Ikea Cherry Wood Faucet' ! ! !\n")
+printas("story teller", "Ok now that you have the faucet we can go outside and get you your ride.\n")
+print_Loading_Name("story teller", "You head outside")
+
+#------------------------GRAB MOUNT------------------------
+#------------------------GRAB MOUNT------------------------
+#------------------------GRAB MOUNT------------------------
+#------------------------GRAB MOUNT------------------------
+#------------------------GRAB MOUNT------------------------
+#------------------------GRAB MOUNT------------------------
+
+printas("story teller", "Go grab your ride and then we'll tune it.\n")
+mount = 0
+while int(mount) != 1:
+	print("		The mounts in front of the pub : ")
+	mount = input("1. Turtle Marianne	---- Enter [1]\n2. Spirit the Stallion	---- Enter [2]\n\
+3. Roger Rabbit		---- Enter [3]\n4. Pig Rodolph		---- Enter [4]\n   ----> ")
+	if int(mount) != 1:
+		printas("story teller", "That's not your mount ? Stealing is bad ! !\n")
+
+#------------------------SHOP FOR MOUNT------------------------
+#------------------------SHOP FOR MOUNT------------------------
+#------------------------SHOP FOR MOUNT------------------------
+#------------------------SHOP FOR MOUNT------------------------
+#------------------------SHOP FOR MOUNT------------------------
+#------------------------SHOP FOR MOUNT------------------------
+
+printas("story teller", "Ok. We're almost ready to leave town. First let's go to the shop.\n")
+print_Loading(" ")
+printas("story teller", "That's the shop right there. Let me give you 200 Blood Thorns so you can purchase something\n")
+#------------------------MONEY INTRODUCTION------------------------
+print("Blood Thorns : %r" % (blood_thorn)) 
+print_Short_Loading(" ")
+blood_thorn = blood_thorn + 200
+print("Blood Thorns : +%r\n" % (blood_thorn))
+time.sleep(1)
+
+npc2 = Character("NPC-Marchande", 1, 1, 1)
+npclist.append(npc2)
+
+printas(npc2.name, "Hello you ! What are you looking for today ?\n")
+choice = 0
+while int(choice) != 1:
+	print("			Shop List : ")
+	choice = input("150 BT. Unbridled Chrome Exhaust .	---- Enter [1]\n200 BT. Gold Shell	---- Enter [2]\n\
+210 BT. Spiky Rims		---- Enter [3]\n400 BT. Carbon Helmet		---- Enter [4]\n   ----> ")
+	if int(choice) != 1:
+		printas("story teller", "You don't need this yet...")
+
+printas(npc2.name, "Here, give me the money and I'll fit it onto your turtle.\n")
+blood_thorn = blood_thorn - 150
+
 

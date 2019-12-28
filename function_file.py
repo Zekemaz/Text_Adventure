@@ -11,7 +11,7 @@ def printas(name: str, text:str):
 
 
 
-def print_loading(name: str, text:str):
+def print_Loading_Name(name: str, text:str):
     print("[" + name.upper() + "] : " + text, end='')
     sys.stdout.flush()
     time.sleep(0.5)
@@ -25,6 +25,46 @@ def print_loading(name: str, text:str):
     sys.stdout.flush()
     time.sleep(0.5)
     print(" ", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".")
+    sys.stdout.flush()
+    time.sleep(0.5)
+
+def print_Loading(text:str):
+    print(text, end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(" ", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".", end='')
+    sys.stdout.flush()
+    time.sleep(0.5)
+    print(".")
+    sys.stdout.flush()
+    time.sleep(0.5)
+
+def print_Short_Loading(text:str):
+    print(text, end='')
     sys.stdout.flush()
     time.sleep(0.5)
     print(".", end='')

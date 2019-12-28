@@ -22,3 +22,9 @@ class Character:
 		self.attack = newAttack	
 	def setDefence(self, newDefence):
 		self.defence = newDefence	
+
+
+class Item:
+	def __init__(self, name, utility):
+		self.name = name
+		self.utility = utility
