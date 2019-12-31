@@ -2,24 +2,27 @@ import random
 import time
 import class_file
 import function_file
-# -----------FUNCTIONS--------
-from class_file import Character, Item
-from function_file import createWorld, printas, print_Loading_Name, print_Loading, print_Short_Loading
+# -----------FUNCTIONS AND CLASSES--------
+from class_file import Entity, Character, Player, Enemy, Item
+from function_file import createWorld, printas, print_Loading_Name, print_Loading, print_Short_Loading, loadingbar, updateMoney
 
 createWorld("The Town", 1, 1)
+# -----------PLAYER, ENEMY, NPC LIST--------
 
 playerlist = []
-player1=Character("Allegory", 100, 50, 50)
+player1=Player("Allegory", 100, 50, 50)
 playerlist.append(player1)
 
 enemylist = []
-enemy1 = Character("xxx", 100, 50, 50)
+enemy1 = Enemy("xxx", 100, 50, 50)
 #ennemylist.append(enemy1)
 
 npclist = []
 
+# -----------ITEM LIST--------
 itemlist = []
 
+# -----------GAME MONEY--------
 blood_thorn = 0
 
 
@@ -33,11 +36,12 @@ blood_thorn = 0
 # -----------INTRO--------
 # -----------INTRO--------
 print("----------------------------------------------------------------")
-print("In this adventure you'll play as Allegory, a magnificient Cowboy...")
+print("In this adventure you'll play as Allegory, a magnificient Cowboy")
 print("----------------------------------------------------------------")
 
 
-
+loadingbar(5, 2)
+print("\n")
 # -----------CHOICE DRINk--------
 # -----------CHOICE DRINk--------
 # -----------CHOICE DRINk--------
@@ -80,7 +84,7 @@ time.sleep(1.5)
 # -----------NPC INTERACTION--------
 # -----------NPC INTERACTION--------
 
-npc1 = Character("NPC-Julien", 1, 1, 1)
+npc1 = Entity("NPC-Julien")
 npclist.append(npc1)
 print("*************POP*************\n\n")
 printas("NPC", "Hey there, my name is Julien\n")
@@ -94,7 +98,7 @@ last juice you've gotta help us get some more.\n\n")
 #------------------------MINI GAME------------------------
 #------------------------MINI GAME------------------------
 
-
+time.sleep(2)
 answer = "a"
 
 while answer != "yes" and answer != "no":
@@ -104,7 +108,7 @@ if answer == "no":
 	printas(npc1.name, "What ? No !? How dare you ! You finish our stock and you dare say NO ?... You know what, \
 we're going to play a game ! If I win you help the town, and if you win you don't have to.\n")
 	print("The game is Who has the highest number ! It's simple you have to draw the highest number inside a deck of 10 cards !\n")
-
+	time.sleep(2)
 	score = 0
 	while score >= 0:
 		print_Loading("NPC-Julien draws a card")
@@ -139,7 +143,7 @@ printas(npc1.name, "Ok... it's basically the adventure of a lifetime. All you ha
 desert to get to the forest to get\
 us some cactus juice. See how easy that sounds ?\n Now I'm going to give you this \
 small ikea cherry wood faucet that you will need to shank into the juiciest and plumpiest cactus you'll find.\n\n")
-
+time.sleep(3)
 
 item1 = Item("Small Ikea Cherry Wood Faucet", "Tap/Robinet")
 itemlist.append(item1)
@@ -176,25 +180,22 @@ printas("story teller", "Ok. We're almost ready to leave town. First let's go to
 print_Loading(" ")
 printas("story teller", "That's the shop right there. Let me give you 200 Blood Thorns so you can purchase something\n")
 #------------------------MONEY INTRODUCTION------------------------
-print("Blood Thorns : %r" % (blood_thorn)) 
-print_Short_Loading(" ")
-blood_thorn = blood_thorn + 200
-print("Blood Thorns : +%r\n" % (blood_thorn))
+blood_thorn = updateMoney(200, blood_thorn)
 time.sleep(1)
 
-npc2 = Character("NPC-Marchande", 1, 1, 1)
+npc2 = Entity("NPC-Marchande")
 npclist.append(npc2)
 
 printas(npc2.name, "Hello you ! What are you looking for today ?\n")
 choice = 0
 while int(choice) != 1:
 	print("			Shop List : ")
-	choice = input("150 BT. Unbridled Chrome Exhaust .	---- Enter [1]\n200 BT. Gold Shell	---- Enter [2]\n\
-210 BT. Spiky Rims		---- Enter [3]\n400 BT. Carbon Helmet		---- Enter [4]\n   ----> ")
+	choice = input("150 BT. Unbridled Chrome Exhaust	---- Enter [1]\n200 BT. Gold Shell			---- Enter [2]\n\
+210 BT. Spiky Rims			---- Enter [3]\n400 BT. Carbon Helmet			---- Enter [4]\n   ----> ")
 	if int(choice) != 1:
 		printas("story teller", "You don't need this yet...")
 
 printas(npc2.name, "Here, give me the money and I'll fit it onto your turtle.\n")
-blood_thorn = blood_thorn - 150
 
+blood_thorn = updateMoney(-150, blood_thorn)
 
