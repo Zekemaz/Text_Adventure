@@ -7,14 +7,11 @@ from class_file import World, Entity, Character, Player, Enemy, Item
 from function_file import printas, print_Loading_Name, print_Loading, print_Short_Loading, loadingbar, updateMoney
 
 # -----------WORLD LIST--------
-worldlist = []
-world_1 = World("The Town", 1, 1)
-worldlist.append(world_1)
 
-world_2 = World("The Cactus Forest", 1, 2)
-worldlist.append(world_2)
+worldlist = []
 
 # -----------PLAYER LIST--------
+
 playerlist = []
 player1=Player("Allegory", 100, 50, 50)
 playerlist.append(player1)
@@ -23,25 +20,18 @@ playerlist.append(player1)
 
 enemylist = []
 
-enemy1 = Enemy("Cactus", 100, 50, 50)
-enemylist.append(enemy1)
 # -----------NPC LIST--------
+
 npclist = []
 npc1 = Entity("STORY TELLER")
 npclist.append(npc1)
 
-npc2 = Entity("NPC-BARMAN")
-npclist.append(npc2)
-
-npc3 = Entity("NPC-Julien")
-npclist.append(npc3)
-
-npc4 = Entity("NPC-Shop Worker")
-npclist.append(npc4)
 # -----------ITEM LIST--------
+
 itemlist = []
 
 # -----------GAME MONEY--------
+
 blood_thorn = 0
 
 
@@ -54,12 +44,26 @@ blood_thorn = 0
 # -----------INTRO--------
 # -----------INTRO--------
 # -----------INTRO--------
-print("----------------------------------------------------------------")
+""" print("----------------------------------------------------------------")
 print("In this adventure you'll play as Allegory, a magnificient Cowboy")
 print("----------------------------------------------------------------")
 
 loadingbar(5, 2)
 print("\n")
+
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+# -----------THE TOWN--------
+world_1 = World("The Town", 1, 1) # --------- CREATION 1ST WORLD -------------
+worldlist.append(world_1)
+
 # -----------CHOICE DRINk--------
 # -----------CHOICE DRINk--------
 # -----------CHOICE DRINk--------
@@ -68,6 +72,8 @@ print("\n")
 # -----------CHOICE DRINk--------
 # -----------CHOICE DRINk--------
 # -----------CHOICE DRINk--------
+npc2 = Entity("NPC-BARMAN") # --------- CREATION NPC 2 ---------
+npclist.append(npc2)
 
 printas(npc1.name, "You enter the bar in The Town to refresh yourself with a drink.\n")
 printas(npc2.name, "Welcome in the CactusPub ! You can have anything to drink ! Make a choice")
@@ -101,6 +107,9 @@ time.sleep(1.5)
 # -----------NPC INTERACTION--------
 # -----------NPC INTERACTION--------
 # -----------NPC INTERACTION--------
+
+npc3 = Entity("NPC-Julien") # --------- CREATION NPC 3 ---------
+npclist.append(npc3)
 
 print("*************POP*************\n\n")
 printas("NPC", "Hey there, my name is Julien\n")
@@ -199,7 +208,7 @@ printas(npc1.name, "That's the shop right there. Let me give you 200 Blood Thorn
 blood_thorn = updateMoney(200, blood_thorn)
 time.sleep(1)
 
-npc4 = Entity("NPC-Marchande")
+npc4 = Entity("NPC-Shop Worker") # --------- CREATION NPC 4 ---------
 npclist.append(npc4)
 
 printas(npc4.name, "Hello you ! What are you looking for today ?\n")
@@ -239,6 +248,8 @@ print("\n")
 # -----------FOREST--------
 # -----------FOREST--------
 # -----------FOREST--------
+world_2 = World("The Cactus Forest", 1, 2) # --------- CREATION 2ND WORLD ---------
+worldlist.append(world_2)
 
 
 printas(npc1.name, "10 km/h, wind in the hair, speeding like never before you finally arrive in The Cactus Forest")
@@ -260,12 +271,35 @@ put on a lot of make up.           Enter [4]\n\n")
 	if int(choiceCactus) != 3:
 		printas(npc1.name, "I'm really not sure about this...\n")
 
-printas(npc4.name, "Yes ! ! I also think that this is the one !\n")
+printas(npc1.name, "Yes ! ! I also think that this is the one !\n")
+ """
 
+enemy1 = Enemy("Campus The Cactus", 100, 50, 50) # --------- CREATION ENEMY ---------
+enemylist.append(enemy1)
 
 #faire connaissance avec lui (choix de questions)
+printas(npc1.name, "Ask him questions !")
+
+choiceQuestion = 0
+while int(choiceQuestion) != 1 and int(choiceQuestion) != 2 and int(choiceQuestion) != 3:
+	choiceQuestion = input("[STORY TELLER] : Randomly choose questions from [1] to [3].\n	----->")
+	if int(choiceQuestion) != 1 and int(choiceQuestion) != 2 and int(choiceQuestion) != 3:
+		printas(player1.name, "It's question [1] to [3]. So you have to enter the corresponding number ! I hate repeting myslef !\n")
+	if int(choiceQuestion) == 1:
+		printas(player1.name, "Hello you ! You look like a friendly Cactus, what's your name ?\n")
+		printas("[ ??? ] : ", "Oh thank you there, Hmm my name is Campus the Cactus, what can I do for you ?")
+		printas(player1.name, " Well I'm coming from " + world_1.name + " and we have a problem regarding our supply of Cactus Juice so I was \
+wondering if we could find a friendly way, that would benefit both " + world_1.name + " and " + world_2.name +", to replenish our stock... \
+I know it sounds weird but I'm sure there's something you'd like that we can provide for you...\n")
+		printas(enemy1.name, "rhouu tsoöme ngootörou use'as e'aı doödoö bɨre'a uhr bɨngoörindo bɨ’aashii... rödiwitö.")
+	if int(choiceQuestion) == 2:
+		printas(player1.name, "Hm... You look quite juicy I think I'll stab ya !\n")
+	if int(choiceQuestion) == 3:
+		printas(player1.name, "Would you be willing to come to " + world_1.name + " with me so I can replenish the Cactus Juice reserve ?")
+
 
 #des cactus arrivent par derriere? ou le vent ?
+printas(player1.name, "Hmm... What ?")
 
 # coup de pression/coup destoc/ca jute
 
