@@ -1,3 +1,14 @@
+class World:
+	def __init__(self, name, long, lat):
+		self.name = name
+		self.long = long
+		self.lat = lat
+
+	def createWorld(self, name: str, long: int, lat: int):
+		print("Welcome to", self.name, "your position is now", self.long,",",self.lat,"\n")
+		return self.name, self.long, self.lat
+
+
 class Entity:
 	def __init__(self, _name):
 		self.name = _name
@@ -47,3 +58,4 @@ class Item:
 	def __init__(self, _name, _utility):
 		self.name = _name
 		self.utility = _utility
+

@@ -1,8 +1,6 @@
 import time
 import sys
 
-def createWorld(name: str, long: int, lat: int):
-	print("Welcome to", name, "your position is now", long,",",lat,"\n")
 
 
 def printas(name: str, text:str):

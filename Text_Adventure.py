@@ -3,22 +3,41 @@ import time
 import class_file
 import function_file
 # -----------FUNCTIONS AND CLASSES--------
-from class_file import Entity, Character, Player, Enemy, Item
-from function_file import createWorld, printas, print_Loading_Name, print_Loading, print_Short_Loading, loadingbar, updateMoney
+from class_file import World, Entity, Character, Player, Enemy, Item
+from function_file import printas, print_Loading_Name, print_Loading, print_Short_Loading, loadingbar, updateMoney
 
-createWorld("The Town", 1, 1)
-# -----------PLAYER, ENEMY, NPC LIST--------
+# -----------WORLD LIST--------
+worldlist = []
+world_1 = World("The Town", 1, 1)
+worldlist.append(world_1)
 
+world_2 = World("The Cactus Forest", 1, 2)
+worldlist.append(world_2)
+
+# -----------PLAYER LIST--------
 playerlist = []
 player1=Player("Allegory", 100, 50, 50)
 playerlist.append(player1)
 
+# -----------ENEMY LIST--------
+
 enemylist = []
-enemy1 = Enemy("xxx", 100, 50, 50)
-#ennemylist.append(enemy1)
 
+enemy1 = Enemy("Cactus", 100, 50, 50)
+enemylist.append(enemy1)
+# -----------NPC LIST--------
 npclist = []
+npc1 = Entity("STORY TELLER")
+npclist.append(npc1)
 
+npc2 = Entity("NPC-BARMAN")
+npclist.append(npc2)
+
+npc3 = Entity("NPC-Julien")
+npclist.append(npc3)
+
+npc4 = Entity("NPC-Shop Worker")
+npclist.append(npc4)
 # -----------ITEM LIST--------
 itemlist = []
 
@@ -39,7 +58,6 @@ print("----------------------------------------------------------------")
 print("In this adventure you'll play as Allegory, a magnificient Cowboy")
 print("----------------------------------------------------------------")
 
-
 loadingbar(5, 2)
 print("\n")
 # -----------CHOICE DRINk--------
@@ -51,8 +69,8 @@ print("\n")
 # -----------CHOICE DRINk--------
 # -----------CHOICE DRINk--------
 
-printas("story teller", "You enter the bar in The Town to refresh yourself with a drink.\n")
-printas("barman", "Welcome in the CactusPub ! You can have anything to drink ! Make a choice")
+printas(npc1.name, "You enter the bar in The Town to refresh yourself with a drink.\n")
+printas(npc2.name, "Welcome in the CactusPub ! You can have anything to drink ! Make a choice")
 
 drink = 0
 
@@ -60,18 +78,18 @@ while int(drink) != 1:
 	print("The list of drinks")
 	drink = input("1. Cactus Juice	---- Enter [1]\n2. Beer		---- Enter [2]\n3. Whiskey	---- Enter [3]\n   ----> ")
 	if int(drink) != 1:
-		printas("barman", "Are you sure you want this ? Why don't you try something else ?")
+		printas(npc2.name, "Are you sure you want this ? Why don't you try something else ?")
 
-printas("barman", "Well, good for you I don't know one drink better than this one !\
+printas(npc2.name, "Well, good for you I don't know one drink better than this one !\
  But sadly you bought the last one. I know some people that will be angry knowing this.\n")
 time.sleep(0.5)
 
 sit = input("Do you want to stand at the bar or sit down at a table ? [Stand]/[Sit] \n").lower().strip()
 while sit != "sit":
-	printas("Story Teller", "Hm.. I'd say we sit what do you think ?\n")
+	printas(npc1.name, "Hm.. I'd say we sit what do you think ?\n")
 	sit = input("Do you want to stand at the bar or sit down at a table ? [Stand]/[Sit] \n").lower().strip()
 
-printas("Story Teller", "Allegory goes and sit alone sipping on his juice...\n\n")
+printas(npc1.name, "Allegory goes and sit alone sipping on his juice...\n\n")
 time.sleep(1.5)
 
 # -----------NPC INTERACTION--------
@@ -84,13 +102,11 @@ time.sleep(1.5)
 # -----------NPC INTERACTION--------
 # -----------NPC INTERACTION--------
 
-npc1 = Entity("NPC-Julien")
-npclist.append(npc1)
 print("*************POP*************\n\n")
 printas("NPC", "Hey there, my name is Julien\n")
 printas(player1.name, "Good morning, what can I do for you ?\n")
-printas(npc1.name, "Well I heard you bought the last Cactus Juice of the town !? Yes I know... \
- News fly extremely fast ! It's normal have you seen how small this town is ? Anyway... Now that you bought the \
+printas(npc3.name, "Well I heard you bought the last Cactus Juice of the town !? Yes I know... \
+News fly extremely fast ! It's normal have you seen how small this town is ? Anyway... Now that you bought the \
 last juice you've gotta help us get some more.\n\n")
 
 #------------------------MINI GAME------------------------
@@ -105,7 +121,7 @@ while answer != "yes" and answer != "no":
 	answer = input("[STORY TELLER] : Do we want to help them ? [Yes] / [No]\n   ----> ").lower().strip()
 
 if answer == "no":
-	printas(npc1.name, "What ? No !? How dare you ! You finish our stock and you dare say NO ?... You know what, \
+	printas(npc3.name, "What ? No !? How dare you ! You finish our stock and you dare say NO ?... You know what, \
 we're going to play a game ! If I win you help the town, and if you win you don't have to.\n")
 	print("The game is Who has the highest number ! It's simple you have to draw the highest number inside a deck of 10 cards !\n")
 	time.sleep(2)
@@ -114,7 +130,7 @@ we're going to play a game ! If I win you help the town, and if you win you don'
 		print_Loading("NPC-Julien draws a card")
 		pickAI = random.randint(4,10)
 		time.sleep(0.5)
-		printas(npc1.name,"I have got the %r. Your Turn now !" %(pickAI))
+		printas(npc3.name,"I have got the %r. Your Turn now !" %(pickAI))
 		time.sleep(0.5)
 		print_Loading("You draw a card")
 		pickPlayer = random.randint(1,10)
@@ -123,13 +139,13 @@ we're going to play a game ! If I win you help the town, and if you win you don'
 		score = pickPlayer - pickAI
 		excuses = ["I had cold hands. We have to start again\n", "I sneezed so I closed my eyes, It doesn't count.\n", "You cheated !\n"]
 		if score < 0:
-			printas(npc1.name, "I won ! haha you've gotta help us now !\n")
+			printas(npc3.name, "I won ! haha you've gotta help us now !\n")
 		elif score > 0:
-			printas(npc1.name, random.choice(excuses))
+			printas(npc3.name, random.choice(excuses))
 		elif score == 0:
-			printas("Story Teller", " Egalité ! !\n")
+			printas(npc1.name, " Egalité ! !\n")
 elif answer == "yes":
-    printas(npc1.name, "Oh how nice of you ! You'll redeem yourself once you replenish the reserve of Juice.\n")
+    printas(npc3.name, "Oh how nice of you ! You'll redeem yourself once you replenish the reserve of Juice.\n")
 
 #------------------------GAME------------------------
 #------------------------GAME------------------------
@@ -139,19 +155,19 @@ elif answer == "yes":
 #------------------------GAME------------------------
 #------------------------GAME------------------------
 
-printas(npc1.name, "Ok... it's basically the adventure of a lifetime. All you have to do is travel through the\
-desert to get to the forest to get\
-us some cactus juice. See how easy that sounds ?\n Now I'm going to give you this \
-small ikea cherry wood faucet that you will need to shank into the juiciest and plumpiest cactus you'll find.\n\n")
+printas(npc3.name, "Ok... it's basically the adventure of a lifetime. All you have to do is travel through the \
+desert to get to the forest to get us some cactus juice. See how easy that sounds ?\n \
+Now I'm going to give you this small ikea cherry wood faucet that you will need to \
+shank into the juiciest, plumpiest and beautifulest cactus you'll find.\n\n")
 time.sleep(3)
 
 item1 = Item("Small Ikea Cherry Wood Faucet", "Tap/Robinet")
 itemlist.append(item1)
 time.sleep(2)
 
-printas("story teller", "YOU OBTAINED A 'Small Ikea Cherry Wood Faucet' ! ! !\n")
-printas("story teller", "Ok now that you have the faucet we can go outside and get you your ride.\n")
-print_Loading_Name("story teller", "You head outside")
+printas(npc1.name, "YOU OBTAINED A 'Small Ikea Cherry Wood Faucet' ! ! !\n")
+printas(npc1.name, "Ok now that you have the faucet we can go outside and get you your ride.\n")
+print_Loading_Name(npc1.name, "You head outside")
 
 #------------------------GRAB MOUNT------------------------
 #------------------------GRAB MOUNT------------------------
@@ -160,14 +176,14 @@ print_Loading_Name("story teller", "You head outside")
 #------------------------GRAB MOUNT------------------------
 #------------------------GRAB MOUNT------------------------
 
-printas("story teller", "Go grab your ride and then we'll tune it.\n")
+printas(npc1.name, "Go grab your ride and then we'll tune it.\n")
 mount = 0
 while int(mount) != 1:
 	print("		The mounts in front of the pub : ")
 	mount = input("1. Turtle Marianne	---- Enter [1]\n2. Spirit the Stallion	---- Enter [2]\n\
 3. Roger Rabbit		---- Enter [3]\n4. Pig Rodolph		---- Enter [4]\n   ----> ")
 	if int(mount) != 1:
-		printas("story teller", "That's not your mount ? Stealing is bad ! !\n")
+		printas(npc1.name, "That's not your mount ? Stealing is bad ! !\n")
 
 #------------------------SHOP FOR MOUNT------------------------
 #------------------------SHOP FOR MOUNT------------------------
@@ -176,26 +192,81 @@ while int(mount) != 1:
 #------------------------SHOP FOR MOUNT------------------------
 #------------------------SHOP FOR MOUNT------------------------
 
-printas("story teller", "Ok. We're almost ready to leave town. First let's go to the shop.\n")
+printas(npc1.name, "Ok. We're almost ready to leave town. First let's go to the shop.\n")
 print_Loading(" ")
-printas("story teller", "That's the shop right there. Let me give you 200 Blood Thorns so you can purchase something\n")
+printas(npc1.name, "That's the shop right there. Let me give you 200 Blood Thorns so you can purchase something\n")
 #------------------------MONEY INTRODUCTION------------------------
 blood_thorn = updateMoney(200, blood_thorn)
 time.sleep(1)
 
-npc2 = Entity("NPC-Marchande")
-npclist.append(npc2)
+npc4 = Entity("NPC-Marchande")
+npclist.append(npc4)
 
-printas(npc2.name, "Hello you ! What are you looking for today ?\n")
+printas(npc4.name, "Hello you ! What are you looking for today ?\n")
 choice = 0
 while int(choice) != 1:
 	print("			Shop List : ")
-	choice = input("150 BT. Unbridled Chrome Exhaust	---- Enter [1]\n200 BT. Gold Shell			---- Enter [2]\n\
-210 BT. Spiky Rims			---- Enter [3]\n400 BT. Carbon Helmet			---- Enter [4]\n   ----> ")
+	choice = input("150 BT. Unbridled Chrome Exhaust	(Speed +10)	---- Enter [1]\n200 BT. Gold Shell			(Armor +20)	---- Enter [2]\n\
+210 BT. Spiky Rims			(Attack +5)	---- Enter [3]\n400 BT. Carbon Helmet			(Armor +5)	---- Enter [4]\n   ----> ")
 	if int(choice) != 1:
-		printas("story teller", "You don't need this yet...")
+		printas(npc1.name, "You don't need this yet...")
 
-printas(npc2.name, "Here, give me the money and I'll fit it onto your turtle.\n")
+printas(npc4.name, "Here, give me the money and I'll fit it onto your turtle.\n")
 
 blood_thorn = updateMoney(-150, blood_thorn)
 
+time.sleep(0.5)
+
+item2 = Item("Unbridled Chrome Exhaust", "Speed +10")
+itemlist.append(item2)
+time.sleep(1)
+
+printas(npc1.name, "YOU OBTAINED A 'Unbridled Chrome Exhaust' ! ! !\n")
+
+print("* Mechanic sound * CLICK CLACK BLOOM BAM BIM\n")
+loadingbar(5,2)
+print("\n")
+printas(npc4.name, "That's it, I'm done. Your turtle is ready.\n\n")
+printas(npc1.name, "Let's goooooo !")
+loadingbar(5, 2)
+print("\n")
+
+# -----------FOREST--------
+# -----------FOREST--------
+# -----------FOREST--------
+# -----------FOREST--------
+# -----------FOREST--------
+# -----------FOREST--------
+# -----------FOREST--------
+# -----------FOREST--------
+
+
+printas(npc1.name, "10 km/h, wind in the hair, speeding like never before you finally arrive in The Cactus Forest")
+loadingbar(5,2)
+print("\n")
+
+printas(npc1.name, "As you can see, this place is filled with cactus. Remember which one does NPC-Julien want\n")
+
+#describe campus
+printas(player1.name, "There's so many cactus ! I will have to use my common sense to find the one !\n")
+choiceCactus = 0
+while int(choiceCactus) != 3:
+	choiceCactus = input("[STORY TELLER] : \nOn the left you can see this small Cactus ! He seems really beautiful \
+but I don't think he will give us enough juice though...   Enter [1]\n\nBehind you there is this massive cactus, \
+he's not beautiful but I'm pretty sure we will get enough juice from his big size.      Enter [2]\n\nJust ahead \
+of you there is this young cactus. He looks rather plumpy, juicy and I wouldn't say he's ugly.                  \
+      Enter [3]\n\nOn your right we both can see the most beautiful cactus ! But I reckon it's just a female who \
+put on a lot of make up.           Enter [4]\n\n")
+	if int(choiceCactus) != 3:
+		printas(npc1.name, "I'm really not sure about this...\n")
+
+printas(npc4.name, "Yes ! ! I also think that this is the one !\n")
+
+
+#faire connaissance avec lui (choix de questions)
+
+#des cactus arrivent par derriere? ou le vent ?
+
+# coup de pression/coup destoc/ca jute
+
+#jeanmarie l'épine attaque, petit jeu de défense. Jean marie gagne
