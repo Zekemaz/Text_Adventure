@@ -1,13 +1,14 @@
 import random
 import time
+
 import class_file
 import function_file
 # -----------FUNCTIONS AND CLASSES--------
-from class_file import World, Entity, Character, Player, Enemy, Item
-from function_file import printas, print_Loading_Name, print_Loading, print_Short_Loading, loadingbar, updateMoney
+from class_file import Character, Enemy, Entity, Item, Player, World
+from function_file import (loadingbar, print_Loading, print_Loading_Name,
+                           print_Short_Loading, printas, updateMoney)
 
 # -----------WORLD LIST--------
-
 worldlist = []
 
 # -----------PLAYER LIST--------
@@ -44,7 +45,7 @@ blood_thorn = 0
 # -----------INTRO--------
 # -----------INTRO--------
 # -----------INTRO--------
-""" print("----------------------------------------------------------------")
+print("----------------------------------------------------------------")
 print("In this adventure you'll play as Allegory, a magnificient Cowboy")
 print("----------------------------------------------------------------")
 
@@ -272,13 +273,15 @@ put on a lot of make up.           Enter [4]\n\n")
 		printas(npc1.name, "I'm really not sure about this...\n")
 
 printas(npc1.name, "Yes ! ! I also think that this is the one !\n")
- """
+
 
 enemy1 = Enemy("Campus The Cactus", 100, 50, 50) # --------- CREATION ENEMY ---------
 enemylist.append(enemy1)
 
 #faire connaissance avec lui (choix de questions)
-printas(npc1.name, "Ask him questions !")
+printas(npc1.name, "Hey you ! What's your name ?!\n")
+printas("[ ??? ] : ", " Hmm my name is Campus the Cactus ! what can I do for you ?\n")
+printas(npc1.name, "Ask him questions !\n")
 
 choiceQuestion = 0
 while int(choiceQuestion) != 1 and int(choiceQuestion) != 2 and int(choiceQuestion) != 3:
@@ -286,21 +289,35 @@ while int(choiceQuestion) != 1 and int(choiceQuestion) != 2 and int(choiceQuesti
 	if int(choiceQuestion) != 1 and int(choiceQuestion) != 2 and int(choiceQuestion) != 3:
 		printas(player1.name, "It's question [1] to [3]. So you have to enter the corresponding number ! I hate repeting myslef !\n")
 	if int(choiceQuestion) == 1:
-		printas(player1.name, "Hello you ! You look like a friendly Cactus, what's your name ?\n")
-		printas("[ ??? ] : ", "Oh thank you there, Hmm my name is Campus the Cactus, what can I do for you ?")
+		printas(player1.name, "Well you look like a friendly Cactus, can I ask you something ?\n")
+		printas(enemy1.name, "Oh thank you there, how can I help you !\n")
 		printas(player1.name, " Well I'm coming from " + world_1.name + " and we have a problem regarding our supply of Cactus Juice so I was \
 wondering if we could find a friendly way, that would benefit both " + world_1.name + " and " + world_2.name +", to replenish our stock... \
 I know it sounds weird but I'm sure there's something you'd like that we can provide for you...\n")
-		printas(enemy1.name, "rhouu tsoöme ngootörou use'as e'aı doödoö bɨre'a uhr bɨngoörindo bɨ’aashii... rödiwitö.")
+		printas(enemy1.name, "rhouu tsoöme ngootörou use'as e'aı doödoö bɨre'a uhr bɨngoörindo bɨ’aashii... rödiwitö.\n")
 	if int(choiceQuestion) == 2:
 		printas(player1.name, "Hm... You look quite juicy I think I'll stab ya !\n")
+		printas(enemy1.name, "rhouu tsoöme ngootörou use'as e'aı doödoö bɨre'a uhr bɨngoörindo bɨ’aashii... rödiwitö.\n")
 	if int(choiceQuestion) == 3:
-		printas(player1.name, "Would you be willing to come to " + world_1.name + " with me so I can replenish the Cactus Juice reserve ?")
-
+		printas(player1.name, "Would you be willing to come to " + world_1.name + " with me so I can replenish the Cactus Juice reserve ?\n")
+		printas(enemy1.name, "rhouu tsoöme ngootörou use'as e'aı doödoö bɨre'a uhr bɨngoörindo bɨ’aashii... rödiwitö.\n")
 
 #des cactus arrivent par derriere? ou le vent ?
 printas(player1.name, "Hmm... What ?")
+printas(npc1.name, "I think he was talking to the other ones and I don't think it's a good sign ! Look around ! I think all the cactus are \
+coming around to attack us\n")
+printas(player1.name, "Or Maybe it's the wind ? DUH...\n")
+time.sleep(1)
+loadingbar(5,2)
+printas(enemy1.name, "Laklac Ÿokani forteë aomagho\n")
+
+
 
 # coup de pression/coup destoc/ca jute
 
 #jeanmarie l'épine attaque, petit jeu de défense. Jean marie gagne
+
+#make fonction attack/def/loose hp in classes
+#
+#
+#
