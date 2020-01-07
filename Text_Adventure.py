@@ -14,7 +14,7 @@ worldlist = []
 # -----------PLAYER LIST--------
 
 playerlist = []
-player1=Player("Allegory", 100, 50, 50)
+player1=Player("Allegory", 100, 15, 15)
 playerlist.append(player1)
 
 # -----------ENEMY LIST--------
@@ -275,7 +275,7 @@ put on a lot of make up.           Enter [4]\n\n")
 printas(npc1.name, "Yes ! ! I also think that this is the one !\n")
 
 
-enemy1 = Enemy("Campus The Cactus", 100, 50, 50) # --------- CREATION ENEMY ---------
+enemy1 = Enemy("Campus The Cactus", 70, 5, 30) # --------- CREATION ENEMY ---------
 enemylist.append(enemy1)
 
 #faire connaissance avec lui (choix de questions)

@@ -41,7 +41,14 @@ class Character(Entity):
 		self.attack = _newAttack	
 	def setDefence(self, _newDefence):
 		self.defence = _newDefence	
-
+	
+	""" def Attack(self, other):
+		other.defense = random.choice(0, 1)
+		attack = self.attack
+		if defense == 1:
+			attack == attack / 2
+		else:
+			pass """
 
 class Player(Character):
 	def __init__(self, _name, _health, _attack, _defence):
